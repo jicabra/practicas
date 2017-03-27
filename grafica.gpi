@@ -1,0 +1,11 @@
+set terminal pslatex solid color auxfile
+set output 'grafica.tex'
+a=14.7978
+b=1.92441
+f(x)=a*x**b
+set xlabel 'Tiempo (s)'
+set ylabel 'Distancia (cm)'
+set title 'angulo $\theta=2^{o}$'
+plot 'datos.txt' u 1:2 w p title 'Datos', f(x) title 'ajuste'
+set term x11
+exit

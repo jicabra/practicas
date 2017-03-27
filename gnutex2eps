@@ -1,0 +1,64 @@
+#!/bin/sh
+#
+# Script to produce an encapsulated postscript from the latex file 
+# output produced with gnuplot. 
+#
+# Sergio Mendoza <sergio@mrao.cam.ac.uk>
+# 5 St Barnabas Rd 
+# Cambridge UK
+# Sat Feb  5 14:17:54 GMT 2000
+#
+# Modifications by:
+# Sergio Mendoza <sergio@astroscu.unam.mx>
+# Instituto de Astronomia UNAM
+# Ciudad Universitaria
+# Ciudad de Mexico
+# Mexico
+# Wed Aug 15 20:53:30 UTC 2001
+#
+# Last Modified: Wed Aug 15 20:53:40 UTC 2001
+#
+# Modifications by:
+# Jose Ignacio Cabrera jicabra@gmail.com
+# Ciudad de Mexico
+# Last Modified 20 Dec 2008
+##################################################################
+# Usage:  script file.tex
+# Where script is this script and file.tex is the output file from
+# gnuplot.
+##################################################################
+
+x=out$RANDOM.tex
+
+cat << EOF > $x
+\documentclass{minimal}
+\usepackage[latin1,utf8x]{inputenc}
+\usepackage{ucs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+ \begin{document}
+  \input{$1}
+ \end{document}
+EOF
+
+# Latex the file
+
+file=`echo $x | sed 's/\.tex//' `
+
+echo $x
+
+latex $file
+dvips -o $file"_out.ps" $file
+
+input=`echo $1 | sed 's/\.tex//'`
+
+ps2eps -f -s 100x100  $file"_out.ps"*
+mv -f $file"_out.eps" $input"_out.eps"
+
+# Convert to eps:
+# gs -q -sDEVICE=epswrite -sOutputFile=$input"_out.eps" $file"_out.ps" -c quit
+# This is the way to use it (see /usr/share/doc/gs/use.txt.gz):
+# gs -dBATCH -dNOPAUSE -sDEVICE=epswrite -sOutputFile=$input"_out.eps" $file"_out.ps" 
+
+rm -f $file".aux" $file".dvi" $file".log" $file"_out.ps" $x texput.log
