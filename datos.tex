@@ -1,0 +1,500 @@
+\documentclass[12pt,letterpaper]{report}
+\usepackage[utf8x]{inputenc}
+\usepackage{ucs}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\spanishdecimal{.}
+ 
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\author{José Ignacio Cabrera Martínez}
+\title{Manejo de datos}
+
+\begin{document}
+\maketitle
+\renewcommand{\tablename}{Tabla}
+\section{Los datos}
+
+Supongamos que después de realizar un experimento obtenemos la siguiente tabla de datos:
+
+\begin{table}[h]
+  \centering
+\begin{tabular}{|c|c|}
+\hline 
+X $ \pm$ 1 A& Y $\pm $ 0.8 B\\
+\hline 
+10 & 2.1 \\ 
+\hline 
+15 & 2.5 \\ 
+\hline 
+20 & 6.1 \\ 
+\hline 
+25 & 5.7 \\ 
+\hline 
+30 & 7.7 \\ 
+\hline 
+35 & 7.1  \\ 
+\hline 
+40 & 9.8 \\ 
+\hline 
+45 & 11.9 \\ 
+\hline 
+50 & 12.3 \\ 
+\hline 
+55 & 14.6 \\ 
+\hline 
+60 & 14.0 \\ 
+\hline 
+65 & 17.1 \\ 
+\hline 
+70 & 18.6 \\ 
+\hline 
+75 & 19.9 \\ 
+\hline 
+80 & 20.0 \\ 
+\hline 
+85 & 24.0 \\ 
+\hline 
+90 & 24.3 \\ 
+\hline 
+95 & 25.0 \\ 
+\hline 
+100 & 26.7 \\ 
+\hline 
+105 & 28.8 \\ 
+\hline 
+110 & 28.1 \\ 
+\hline 
+115 & 30.2 \\ 
+\hline 
+120 & 32.9 \\ 
+\hline 
+125 & 33.4 \\
+\hline 
+130 & 33.9 \\
+\hline 
+135 & 36.1 \\
+\hline 
+140 & 38.1 \\
+\hline 
+145 & 37.4 \\
+\hline 
+150 & 40.0 \\
+\hline 
+
+\end{tabular} 
+\caption{Datos obtenidos del experimento, X es la variable independiente y Y la variable dependiente, A es la unidad de la variable X y B es la unidad de la variable Y}\label{t1}
+\end{table}
+
+Para comenzar a analizar nuestros datos, primero necesitamos poder visualizarlos de una manera más simple que como se pueden ver en la tabla \ref{t1}, pues aunque podemos ver que crecen los valores de ambas variables, no es muy cómodo ver el comportamiento en forma de una tabla, es mas sencillo darse cuenta del comportamiento en una imagen. Por esta razón es mejor hacer una gráfica.\\
+
+\section{Gráficas}
+
+Ahora la cuestión es como hacer una buena gráfica, lo primero que necesitamos definir es quienes serán los ejes de nuestra gráfica. Definiremos a nuestra variable independiente X como la abscisa y a la variable dependiente  Y como la ordenada. Ahora necesitamos definir correctamente  la longitud del intervalo de nuestros ejes, pues si la longitud del intervalo es muy pequeña parte de la información quedará fuera de la gráfica, como se puede notar en la figura \ref{g1}, además en esta gráfica no sabemos que hay en cada eje, por lo cual no es muy útil, lo único bueno en esta gráfica es como está representada la incertidumbre de cada dato, como un segmento de línea que recorre todo el intervalo de X y de Y para cada dato.\\
+
+En la  figura \ref{g2} la longitud del intervalo de los ejes es demasiado grande y  es complicado leer la información de nuestra gráfica, por otra parte en esta gráfica aunque los ejes están etiquetados con el nombre de cada variable en cada eje, no sabemos las unidades de cada variable, por esta razón la información que nos ofrece esta gráfica es incompleta.\\ 
+
+En la figura \ref{g3} tenemos ya definida nuestra gráfica con una escala adecuada para ambos ejes, además los ejes están correctamente etiquetados y muestran las unidades de cada variable entre paréntesis, así es como se debe de hacer una gráfica.\\
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=1.0]{g1_out.eps} 
+\caption{Gráfica con el intervalo de longitud de los ejes demasiado pequeño, por eso muchos puntos de nuestros datos quedaron fuera de la gráfica. Los ejes no están  etiquetados, por esa razón no se sabe que hay en cada eje ni las unidades en que se medió, está es una mala gráfica.}\label{g1}
+\end{center}
+\end{figure}
+
+
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=1.0]{g2_out.eps} 
+\caption{Gráfica con la escala de los ejes demasiado grande,por eso todos los datos están comprimidos en una pequeña porción de la gráfica, presentar de esta manera la información hace dificil la lectura de los datos.Los ejes están  etiquetados pero no sabemos las unidades de cada eje, por tanto la información es incompleta, aunque esta gráfica es mejor que la gráfica 1 tampoco es una buena gráfica.}\label{g2}
+\end{center}
+\end{figure}
+
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=1.0]{g3_out.eps} 
+\caption{En esta gráfica cada eje tiene una escala adecuada para que se pueda leer la información sin problemas. Cada eje esta etiquetado con el nombre de cada variable y además se presneta entre parentesis las unidades  en que se midieron las variables. Este es un buen ejemplo de como se debe de presentar una gráfica.}\label{g3}
+\end{center}
+\end{figure}
+
+En la gráfica \ref{g3} podemos ver como según incrementa la variable independiente (X), la variable dependiente (Y) también se incrementa, eso hace pensar que ambas variables podrían estar correlacionadas, pero ¿qué tan correlacionadas pueden estar ambas variables? Para responder esta pregunta de una manera objetiva necesitamos definir un criterio que nos ayude a responder a esta pregunta. Para definir ese criterio recurriremos al concepto de varianza, desviación estándar  y  de covarianza, pues estas dos cantidades nos ayudaran a definir un criterio de correlación que nos será útil.\\
+
+\section{Correlación entre las variables}
+
+
+La desviación  estándar   está definida como:
+\begin{equation}
+ \sigma_{x} = \sqrt{\frac{1}{n}\sum_{i=1}^{n}(X_{i}- \overline{X})^{2}}
+ \end{equation} 
+ 
+para una distribución de valores  de X, y $\overline{X} $ es el promedio de los valores de X; mientras que la varianza es simplemente $\sigma^{2} $. Por otra parte la covarianza para un conjunto de datos X y Y  se puede calcular como:
+
+\begin{equation}
+\sigma_{xy}=\frac{1}{n}\sum_{i=1}^{n} (X_{i}- \overline{X})(Y_{i}- \overline{Y})
+\end{equation}
+
+esta cantidad es una especie de varianza cruzada de los datos de X y Y, aprovechando esta propiedad podemos analizar que ocurre si por ejemplo la variable Y fuera una función lineal de X, es decir que:
+
+\begin{equation}
+Y= mX+b
+\end{equation}
+
+ entonces la covarianza sería:
+\begin{equation}
+\sigma_{xy}=\frac{1}{n}\sum_{i=1}^{n} (X_{i}- \overline{X})(mX_{i} +b - \overline{Y})
+\end{equation}
+con 
+
+\begin{equation}
+\overline{Y} = \frac{1}{n}\sum_{i=1}^{n} Y_{i}=\frac{1}{n}\sum_{i=1}^{n} (mX_{i}+b) 
+\end{equation}
+ desarrollando lo anterior se tiene que:
+ \begin{equation}
+\overline{Y} = \frac{1}{n} (\sum_{i=1}^{n} mX_{i} +\sum_{i=1}^{n} b) = m \frac{1}{n}\sum_{i=1}^{n} X_{i} + \frac{n}{n}b
+\end{equation}
+
+\begin{equation}
+\overline{Y} = m\overline{X} +b
+\end{equation}
+
+Sustituyendo la ecuación 7 en la ecuación 4 entonces tenemos que:
+
+
+\begin{equation}
+\sigma_{xy}=\frac{1}{n}\sum_{i=1}^{n} (X_{i}- \overline{X})(mX_{i} +b - m\overline{X} -b)= \frac{1}{n}\sum_{i=1}^{n} (X_{i}- \overline{X})(mX_{i}  - m\overline{X} )
+\end{equation}
+\begin{equation}
+\sigma_{xy} =\frac{m}{n}\sum_{i=1}^{n} (X_{i}- \overline{X})(X_{i}  - \overline{X} ) = m \sigma_{x}^{2}
+\end{equation}
+
+Es decir que en este caso la covarianza sería la varianza de X multiplicada por la constante m de la relación lineal . ahora desarrollando como seria la desviación estándar de Y bajo esta suposición tendríamos que:
+
+\begin{equation}
+\sigma_{y} = \sqrt{\frac{1}{n}\sum_{i=1}^{n}(mX_{i}+b - m\overline{X}-b)^{2}}= \sqrt{\frac{m^{2}}{n}\sum_{i=1}^{n}(X_{i} - \overline{X})^{2}}
+\end{equation}
+
+resultando entonces
+
+\begin{equation}
+\sigma_{y}=\mid m\mid \sqrt{\frac{1}{n}\sum_{i=1}^{n}(X_{i} - \overline{X})^{2}} = \mid m \mid \sigma_{x}
+\end{equation}
+
+Con lo anterior podemos usar los resultados de la ecuación 9 y la ecuación 11 para definir un parámetro que nos ayude a medir la correlación entre las variables X y Y como
+\begin{equation}
+\rho =\dfrac{\sigma_{xy}}{\sigma_{x}\sigma_{y}}= \dfrac{\displaystyle\sum_{i=1}^{n} (X_{i}- \overline{X})(Y_{i}  - \overline{Y})}{\sqrt{\displaystyle\sum_{i=1}^{n}(X_{i}- \overline{X})^{2}}  \sqrt{\displaystyle\sum_{i=1}^{n}(Y_{i}- \overline{Y})^{2}} }
+\end{equation}
+
+Entonces si Y es una función lineal de X, utilizando las ecuaciones 9 y 11 en la ecuación  12 se obtiene:  
+
+\begin{equation}
+\rho =\dfrac{m}{\mid m\mid}= \pm 1
+\end{equation}
+
+A $\rho$ se le suele llamar el coeficiente de correlación de Pearson, y sus posibles valores están dentro del intervalo [-1,1]. $ \rho = 1$ significa que las variables tienen una correlación lineal perfecta, $ \rho \leqslant 1 $ significa que se tiene una buena correlación entre las variables, hasta un valor $ \sim 0.7 $ es aceptable. Si $ \rho $  es 0.5 o menor, es una mala correlación, si $ \rho \sim 0$ podemos decir que no hay correlación lineal entre las variables; pero que no haya correlación lineal no significa que no haya otros tipos de correlación entre las variables. Si $ \rho \geq -1 $ se tiene una anticorrelación lineal es decir que según crece una variable la otra decrece proporcionalmente, y finalmente si $ \rho $ está entre 0 y -5 es una mala correlación.\\
+
+Ahora si aplicamos el coeficiente de correlación a nuestro conjunto de datos obtenidos de  por el experimento (ver tabla \ref{t1}), obtendremos que $\rho = 0.997$, esto significa que las variables X y Y están altamente correlacionadas linealmente. \\
+
+Si queremos describir el comportamiento de los datos de nuestro experimento mediante un modelo matemático, el hecho de que $ \rho $ es tan cercano a 1 sugiere que el modelo matemático podría  ser de la forma (aunque no necesariamente) $ Y= mX+b$. Si el modelo es  una línea recta, la pregunta es ¿Cómo se pueden encontrar los parámetros \textit{m} y \textit{b} de la recta? Para responder a esa pregunta, se esperaría que dichos parámetros se pudieran determinar a partir de los datos.\\
+
+\section{El método de mínimos cuadrados}
+
+
+Supongamos que la mejor línea recta que describe el comportamiento de los datos del experimento es una especie de promedio, los puntos mas alejados de la recta serían aquellos con mayor dispersión alrededor del promedio. Lo que desearíamos es que la dispersión de los puntos sea la más pequeña posible, para esto podemos definir una cantidad llamada \textit{dif} que sea la suma de las diferencias entre los valores de las ordenadas y los valores teóricos que predice el modelo matemático, es decir:
+
+\begin{equation}
+dif= \sum_{i=1}^{n}(Y_{i}-f(X_{i}))
+\end{equation}
+
+Si tomamos esta definición, tendremos un problema importante y es que \textit{dif} podría valer 0 sin que la dispersión de los datos sea pequeña; puede haber datos muy dispersos arriba y abajo del modelo matemático y la suma de diferencias podría cancelarse o dar valores muy cercanos a cero, por este motivo esta no es una buena cantidad  que tratemos de minimizar, entonces  se tomará mejor la cantidad \textit{dif} definida como:
+\begin{equation}\label{eqdif}
+dif= \sum_{i=1}^{n}(Y_{i}-f(X_{i}))^{2}
+\end{equation}
+
+El modelo teórico \textit{f(X)} puede ser tan simple o tan complicado como uno desee, pero en general siempre es mejor tratar de utilizar modelos lo mas sencillos posibles, como una línea recta, si el modelo mas simple no funciona, entonces se puede tratar con modelos mas complicados. Pero en general entre menos términos tenga un modelo, este se considera mejor, ya que es mas fácil interpretar dentro del experimento que representan pocos términos a tener que identificar que pueden representar muchos parámetros de un modelo.\\
+
+Para el caso de nuestros datos consideraremos un modelo de línea recta, es decir $ f(X)= mX + b $, entonces la \textit{dif} toma la forma:
+
+\begin{equation}
+dif= \sum_{i=1}^{n}(Y_{i}-mX_{i}-b)^{2}
+\end{equation}
+
+Ahora lo que se quiere hacer es minimizar \textit{dif}, pero  ¿respecto a que cantidades? Las cantidades que nos interesa determinar son \textit{m} y \textit{b}, entonces diremos que $ dif=dif(m,b) $ y respecto a estos parámetros minimizaremos a $ dif $. La manera de minimizar será derivando respecto a \textit{m} y \textit{b} e igualando a cero esas derivadas, \textit{i. e.}
+
+\begin{eqnarray}
+ \dfrac{\partial dif}{\partial m}= \sum_{i=1}^{n}\dfrac{\partial (Y_{i}-mX_{i}-b)^{2}}{\partial m} = 0 \\
+ \dfrac{\partial dif}{\partial b}= \sum_{i=1}^{n}\dfrac{\partial (Y_{i}-mX_{i}-b)^{2}}{\partial b} = 0
+\end{eqnarray}
+
+Desarrollando las ecuaciones 17 y 18 se tiene que:
+\begin{eqnarray}
+\dfrac{\partial dif}{\partial m}= \sum_{i=1}^{n} 2 (Y_{i}-mX_{i}-b)(-X_{i})= -2 \sum_{i=1}^{n}  (Y_{i}-mX_{i}-b)(X_{i})  = 0       \\
+\dfrac{\partial dif}{\partial b}= \sum_{i=1}^{n} 2(Y_{i}-mX_{i}-b)(-1)= -2\sum_{i=1}^{n} (Y_{i}-mX_{i}-b)=0
+\end{eqnarray}
+como las ecuaciones 19 y 20 son iguales a 0, se púede eliminar el factor  -2. Si se desarrollan ambas ecuaciones entonces tendremos como resultado el sistema de ecuaciones:
+\begin{eqnarray}
+\dfrac{\partial dif}{\partial m} = \sum_{i=1}^{n}X_{i}Y_{i}-m\sum_{i=1}^{n}(X_{i})^{2} -b\sum_{i=1}^{n}X_{i}=0 \\
+\dfrac{\partial dif}{\partial b}=\sum_{i=1}^{n}Y_{i}- m\sum_{i=1}^{n}X_{i}-\sum_{i=1}^{n} b=0
+\end{eqnarray}
+resecribiendo las ecucaciones 21 y 22 tenemos:
+\begin{eqnarray}
+m\sum_{i=1}^{n}(X_{i})^{2} +b\sum_{i=1}^{n}X_{i}=\sum_{i=1}^{n}X_{i}Y_{i} \\
+m\sum_{i=1}^{n}X_{i}+ nb =\sum_{i=1}^{n}Y_{i}
+\end{eqnarray}
+
+Las ecuaciones 23 y 24 son dos ecuaciones lineales con dos incógnitas (\textit{m} y \textit{b}), en principio el sistema tiene una solución única, la cual  podemos encontrar de varias maneras, si utilizamos el método de los determinantes, tendremos que el determinante principal es:
+\begin{equation}
+ \triangle =
+ \begin{vmatrix}
+ \displaystyle\sum_{i=1}^{n}(X_{i})^{2} & \displaystyle\sum_{i=1}^{n}X_{i} \\
+ \displaystyle\sum_{i=1}^{n}X_{i} & n
+ \end{vmatrix}
+ = n\sum_{i=1}^{n}(X_{i})^{2}-\left( \sum_{i=1}^{n}X_{i}\right) ^{2}
+ \end{equation} 
+es necesario recordar que para que exista una solución $ \triangle \neq 0$ pues podría llegar a darse este caso $ \triangle = 0$ aunque es poco probable. El valor de  \textit{m} es:
+\begin{equation}\label{pendiente}
+ m= \dfrac{\begin{vmatrix}
+  \displaystyle\sum_{i=1}^{n}X_{i}Y_{i}& \displaystyle\sum_{i=1}^{n}X_{i} \\
+ \displaystyle\sum_{i=1}^{n}Y_{i} & n
+ \end{vmatrix}
+ }{n\displaystyle\sum_{i=1}^{n}(X_{i})^{2}-\left( \displaystyle\sum_{i=1}^{n}X_{i}\right) ^{2}} =\dfrac{n \displaystyle\sum_{i=1}^{n}X_{i}Y_{i}-\displaystyle\sum_{i=1}^{n}X_{i} \displaystyle\sum_{i=1}^{n}Y_{i}}{n\displaystyle\sum_{i=1}^{n}(X_{i})^{2}-\left( \displaystyle\sum_{i=1}^{n}X_{i}\right) ^{2}}
+\end{equation}
+
+y \textit{b} es :
+\begin{equation}\label{ordenadaorigen}
+b= \dfrac{\begin{vmatrix}
+\displaystyle\sum_{i=1}^{n}(X_{i})^{2} & \displaystyle\sum_{i=1}^{n}X_{i}Y_{i}\\
+\displaystyle\sum_{i=1}^{n}X_{i} & \displaystyle\sum_{i=1}^{n}Y_{i}
+ \end{vmatrix}
+}{n\displaystyle\sum_{i=1}^{n}(X_{i})^{2}-\left( \displaystyle\sum_{i=1}^{n}X_{i}\right) ^{2}} = \dfrac{\displaystyle\sum_{i=1}^{n}(X_{i})^{2}\displaystyle\sum_{i=1}^{n}Y_{i}-\displaystyle\sum_{i=1}^{n}X_{i}Y_{i}\displaystyle\sum_{i=1}^{n}X_{i} }{n\displaystyle\sum_{i=1}^{n}(X_{i})^{2}- \left( \displaystyle\sum_{i=1}^{n}X_{i}\right) ^{2}}
+\end{equation}
+
+De esta manera podemos determinar el valor de \textit{m} y \textit{b} a partir de nuestros datos. Utilizando las ecuaciones 26 y 27 con los  datos de nuestra tabla \ref{t1}, obtendremos que \textit{m}= 0.273 B/A y \textit{b}=-0.950 B (recordar que la unidad de la variable X en nuestro experimento es A y la unidad de la variable Y es B).\\
+Hasta este punto cabe preguntarse que tan bien definidos están los parámetros \textit{m} y \textit{b}, pues finalmente estas cantidades deben de tener una cierta incertidumbre asociada, ahora bien la cuestion es ¿como determinar la incertidumbre de estas cantidades? Para responder a está pregunta es necesario recordar como propagar incertidumbres para una función de varias variables \textit{f=f(x,y,...)}:
+\begin{equation}
+\sigma_{f}^{2}=\left(  \dfrac{\partial f}{\partial x} \right) ^{2} \sigma_{x}^{2} + \left(  \dfrac{\partial f}{\partial y} \right) ^{2} \sigma_{y}^{2} + ...
+\end{equation}
+en este caso nuestras funciones de varias variables son \textit{m} y \textit{b}, y las variables de las funciones son las $ Y_{i} $, pues todo el desarrollo se hizo considerando únicamente la suma de las diferencias cuadráticas entre valores de las ordenadas (datos medidos) y el modelo de una línea recta.
+
+La cantidad $ \sigma_{Y_{i}} $ se puede factorizar, pues es la misma para todas las variables $ Y_{i} $, ya que es una medida de dispersión alrededor del modelo matemático, entonces:
+\begin{equation}\label{sigmay}
+\sigma_{Y_{i}}=\sqrt{\dfrac{1}{n-l}\sum_{i=1}^{n}\left( Y_{i}-mX_{i}-b \right) ^{2}} =\sigma_{Y}
+\end{equation}
+donde \textit{l} es el número de parámetros que tienen nuestro modelo, para nuestro caso \textit{l=2} y \textit{n} es como siempre nuestro número total de datos. \\
+
+Para calcular la incertidumbre de \textit{m} es conveniente desarrollar primero esta cantidad, desarrollando un poco la ecuación \ref{pendiente} se :
+
+\begin{equation}
+m=\dfrac{n X_{1}Y_{1}- Y_{1}\displaystyle\sum_{i=1}^{n} X_{i} + n X_{2}Y_{2}- Y_{2}\displaystyle\sum_{i=1}^{n} X_{i} + ...}{n \displaystyle\sum_{i=1}^{n} X_{i}^{2}- \left( \displaystyle\sum_{i=1}^{n} X_{i} \right) ^{2} }
+\end{equation}
+las derivadas son sobre las $ Y_{i} $, así que si se toma la derivada del \textit{k} esimo elemento, esta derivada será:
+\begin{equation}
+\dfrac{\partial m}{\partial Y_{k}} = \dfrac{n X_{k}- \displaystyle\sum_{i=1}^{n} X_{i}}{n \displaystyle\sum_{i=1}^{n} X_{i}^{2}- \left( \displaystyle\sum_{i=1}^{n} X_{i} \right) ^{2}}
+\end{equation}
+entonces
+\begin{equation}
+\left( \dfrac{\partial m}{\partial Y_{k}} \right) ^{2} =
+\dfrac{n^{2} X_{k}^{2} + \left(  \displaystyle\sum_{i=1}^{n} X_{i}  \right)^{2} -2n X_{k} \displaystyle\sum_{i=1}^{n} X_{i}   }{\left( n \displaystyle\sum_{i=1}^{n} X_{i}^{2}- \left( \displaystyle\sum_{i=1}^{n} X_{i} \right) ^{2}\right) ^{2}}
+\end{equation}
+el término anterior es solo una de las n derivadas elevadas cuadrado que se tienen que sumar para poder calcular la incertidumbre asociada a \textit{m},  entonces sumando los \textit{n} términos tenemos que:
+\begin{equation}
+\displaystyle\sum_{k=1}^{n} \left( \dfrac{\partial m}{\partial Y_{k}} \right) ^{2} = \displaystyle\sum_{k=1}^{n}  \dfrac{n^{2} X_{k}^{2} +  \left( \displaystyle\sum_{i=1}^{n} X_{i}\right)^{2} -2n X_{k} \displaystyle\sum_{i=1}^{n} X_{i}   }{\left( n \displaystyle\sum_{i=1}^{n} X_{i}^{2}- \left( \displaystyle\sum_{i=1}^{n} X_{i} \right) ^{2}\right) ^{2}}
+\end{equation}
+
+\begin{equation}\label{ik}
+ = \dfrac{n^{2} \displaystyle\sum_{k=1}^{n} X_{k}^{2} + \displaystyle\sum_{k=1}^{n} \left(  \displaystyle\sum_{i=1}^{n} X_{i} \right)^{2} -2n \displaystyle\sum_{k=1}^{n} X_{k} \displaystyle\sum_{i=1}^{n} X_{i}   }{\left( n \displaystyle\sum_{i=1}^{n} X_{i}^{2}- \left( \displaystyle\sum_{i=1}^{n} X_{i} \right) ^{2}\right) ^{2}}
+\end{equation}
+los índices \textit{i} y \textit{k} se pueden intercambiar entre si ya que solo representan la forma de numerar los datos, entonces si cambiamos al índice \textit{k} por \textit{i} entonces  la ecuación \ref{ik} queda:
+ \begin{equation}
+ \displaystyle\sum_{i=1}^{n} \left( \dfrac{\partial m}{\partial Y_{i}} \right) ^{2} =
+ \dfrac{n^{2} \displaystyle\sum_{i=1}^{n} X_{i}^{2} + \displaystyle\sum_{i=1}^{n} \left(  \displaystyle\sum_{i=1}^{n} X_{i} \right)^{2} -2n \displaystyle\sum_{i=1}^{n} X_{i} \displaystyle\sum_{i=1}^{n} X_{i}   }{\left( n \displaystyle\sum_{i=1}^{n} X_{i}^{2}- \left( \displaystyle\sum_{i=1}^{n} X_{i} \right) ^{2}\right) ^{2}}
+ \end{equation}
+
+\begin{equation}
+=  \dfrac{n^{2} \displaystyle\sum_{i=1}^{n} X_{i}^{2} + n \left(  \displaystyle\sum_{i=1}^{n} X_{i} \right)^{2} -2n \left(  \displaystyle\sum_{i=1}^{n} X_{i}\right)^{2}   }{\left( n \displaystyle\sum_{i=1}^{n} X_{i}^{2}- \left( \displaystyle\sum_{i=1}^{n} X_{i} \right) ^{2}\right) ^{2}}
+\end{equation}
+\begin{equation}
+=  \dfrac{n^{2} \displaystyle\sum_{i=1}^{n} X_{i}^{2} - n \left(  \displaystyle\sum_{i=1}^{n} X_{i} \right)^{2}   }{\left( n \displaystyle\sum_{i=1}^{n} X_{i}^{2}- \left( \displaystyle\sum_{i=1}^{n} X_{i} \right) ^{2}\right) ^{2}}
+\end{equation}
+\begin{equation}\label{mlcf}
+= n \dfrac{n \displaystyle\sum_{i=1}^{n} X_{i}^{2} -  \left(  \displaystyle\sum_{i=1}^{n} X_{i} \right)^{2}   }{\left( n \displaystyle\sum_{i=1}^{n} X_{i}^{2}- \left( \displaystyle\sum_{i=1}^{n} X_{i} \right) ^{2}\right) ^{2}}
+\end{equation}
+con lo cual la ecuación \ref{mlcf} se reduce a: 
+\begin{equation}
+\displaystyle\sum_{i=1}^{n} \left( \dfrac{\partial m}{\partial Y_{i}} \right) ^{2} =
+\dfrac{n}{n \displaystyle\sum_{i=1}^{n} X_{i}^{2}- \left( \displaystyle\sum_{i=1}^{n} X_{i} \right) ^{2}}
+\end{equation}
+con lo anterior se tiene finalmente que la incertidumbre de \textit{m} ($ \sigma_{m} $) es:
+\begin{equation}
+\sigma_{m}= \sigma_{Y} \sqrt{\dfrac{n}{n \displaystyle\sum_{i=1}^{n} X_{i}^{2}- \left( \displaystyle\sum_{i=1}^{n} X_{i} \right) ^{2}}}
+\end{equation}
+
+\begin{equation}\label{sigmam}
+\sigma_{m} =\sqrt{\dfrac{1}{n-2}\sum_{i=1}^{n}\left( Y_{i}-mX_{i}-b \right) ^{2}}   \sqrt{\dfrac{n}{n \displaystyle\sum_{i=1}^{n} X_{i}^{2}- \left( \displaystyle\sum_{i=1}^{n} X_{i} \right) ^{2}}}
+\end{equation}
+
+Para  encontrar la incertidumbre del parámetro \textit{b} es necesario hacer el mismo desarrollo, así que desarrollando la ecuación  \ref{ordenadaorigen}:
+\begin{equation}
+b=\dfrac{Y_{1}\displaystyle\sum_{i=1}^{n} X_{i}^{2} - Y_{1}X_{1} \displaystyle\sum_{i=1}^{n}X_{i} + 
+Y_{2} \displaystyle\sum_{i=1}^{n} X_{i}^{2} - Y_{2}X_{2} \displaystyle\sum_{i=1}^{n}X_{i} + ... }{n \displaystyle\sum_{i=1}^{n} X_{i}^{2}- \left( \displaystyle\sum_{i=1}^{n} X_{i} \right) ^{2}}
+\end{equation}
+tomando la derivada respecto al la variable $ Y_{k} $ se obtiene :
+\begin{equation}
+\dfrac{\partial b}{\partial Y_{k}} =
+\dfrac{\displaystyle\sum_{i=1}^{n} X_{i}^{2} - X_{k} \displaystyle\sum_{i=1}^{n} X_{i}}{n \displaystyle\sum_{i=1}^{n} X_{i}^{2}- \left( \displaystyle\sum_{i=1}^{n} X_{i} \right) ^{2}}
+\end{equation}
+elevando al cuadrado:
+\begin{equation}
+\left( \dfrac{\partial b}{\partial Y_{k}} \right) ^{2} =
+\dfrac{  \left(  \displaystyle\sum_{i=1}^{n} X_{i}^{2}\right) ^{2} + 
+X_{k}^{2}  \left(  \displaystyle\sum_{i=1}^{n} X_{i} \right) ^{2} -
+2 X_{k} \displaystyle\sum_{i=1}^{n} X_{i}^{2} \displaystyle\sum_{i=1}^{n} X_{i}   }{\left( n \displaystyle\sum_{i=1}^{n} X_{i}^{2}- \left( \displaystyle\sum_{i=1}^{n} X_{i} \right) ^{2}     \right) ^{2} }
+\end{equation}
+Ahora haciendo la suma sobre todos los elementos \textit{k}
+\begin{equation}
+\displaystyle\sum_{k=1}^{n} \left( \dfrac{\partial b}{\partial Y_{k}} \right) ^{2} =
+\dfrac{  \displaystyle\sum_{k=1}^{n} \left(   \displaystyle\sum_{i=1}^{n} X_{i}^{2}   \right) ^{2}  +
+\displaystyle\sum_{k=1}^{n} X_{k}^{2}  \left( \displaystyle\sum_{i=1}^{n} X_{i} \right) ^{2} -
+2 \displaystyle\sum_{k=1}^{n} X_{k} \displaystyle\sum_{i=1}^{n} X_{i}^{2}  \displaystyle\sum_{i=1}^{n} X_{i}  }{\left( n \displaystyle\sum_{i=1}^{n} X_{i}^{2}- \left( \displaystyle\sum_{i=1}^{n} X_{i} \right) ^{2}     \right) ^{2}}
+\end{equation}
+
+\begin{equation}
+ = \dfrac{  n \left(   \displaystyle\sum_{i=1}^{n} X_{i}^{2}   \right) ^{2}  +
+\displaystyle\sum_{k=i}^{n} X_{k}^{2}  \left( \displaystyle\sum_{i=1}^{n} X_{i} \right) ^{2} -
+2 \displaystyle\sum_{k=1}^{n} X_{k} \displaystyle\sum_{i=1}^{n} X_{i}^{2}  \displaystyle\sum_{i=1}^{n} X_{i}  }{\left( n \displaystyle\sum_{i=1}^{n} X_{i}^{2}- \left( \displaystyle\sum_{i=1}^{n} X_{i} \right) ^{2}     \right) ^{2}}
+\end{equation}
+cambiando el índice \textit{k} por \textit{i}:
+\begin{equation}
+\displaystyle\sum_{i=1}^{n} \left( \dfrac{\partial b}{\partial Y_{i}} \right) ^{2}
+= \dfrac{  n \left(   \displaystyle\sum_{i=1}^{n} X_{i}^{2}   \right) ^{2}  +
+\displaystyle\sum_{i=1}^{n} X_{i}^{2}  \left( \displaystyle\sum_{i=1}^{n} X_{i} \right) ^{2} -
+2 \displaystyle\sum_{i=1}^{n} X_{i} \displaystyle\sum_{i=1}^{n} X_{i}^{2}  \displaystyle\sum_{i=1}^{n} X_{i}  }{\left( n \displaystyle\sum_{i=1}^{n} X_{i}^{2}- \left( \displaystyle\sum_{i=1}^{n} X_{i} \right) ^{2}     \right) ^{2}}
+\end{equation}
+\begin{equation}
+= \dfrac{  n \left(   \displaystyle\sum_{i=1}^{n} X_{i}^{2}   \right) ^{2}  +
+\displaystyle\sum_{i=1}^{n} X_{i}^{2}  \left( \displaystyle\sum_{i=1}^{n} X_{i} \right) ^{2} -
+2 \displaystyle\sum_{i=1}^{n} X_{i}^{2} \left(  \displaystyle\sum_{i=1}^{n} X_{i} \right) ^{2} }{\left( n \displaystyle\sum_{i=1}^{n} X_{i}^{2}- \left( \displaystyle\sum_{i=1}^{n} X_{i} \right) ^{2}     \right) ^{2}}
+\end{equation}
+
+\begin{equation}
+= \dfrac{  n \left(   \displaystyle\sum_{i=1}^{n} X_{i}^{2}   \right) ^{2}   -
+ \displaystyle\sum_{i=1}^{n} X_{i}^{2} \left(  \displaystyle\sum_{i=1}^{n} X_{i} \right) ^{2} }{\left( n \displaystyle\sum_{i=1}^{n} X_{i}^{2}- \left( \displaystyle\sum_{i=1}^{n} X_{i} \right) ^{2}     \right) ^{2}}
+\end{equation}
+
+\begin{equation}
+=   \displaystyle\sum_{i=1}^{n} X_{i}^{2}   \dfrac{  n  \displaystyle\sum_{i=1}^{n} X_{i}^{2}     -
+  \left(  \displaystyle\sum_{i=1}^{n} X_{i} \right) ^{2} }{\left( n \displaystyle\sum_{i=1}^{n} X_{i}^{2}- \left( \displaystyle\sum_{i=1}^{n} X_{i} \right) ^{2}     \right) ^{2}}
+\end{equation}
+simplificando la última expresión, se tiene como resultado:
+\begin{equation}\label{deltab}
+\displaystyle\sum_{i=1}^{n} \left( \dfrac{\partial b}{\partial Y_{i}} \right) ^{2} =
+\dfrac{\displaystyle\sum_{i=1}^{n} X_{i}^{2}}{n \displaystyle\sum_{i=1}^{n} X_{i}^{2}- \left( \displaystyle\sum_{i=1}^{n} X_{i} \right) ^{2}}
+\end{equation}
+
+Con las ecuaciones \ref{sigmay} y \ref{deltab} se puede escribir la incertidumbre del parámetro \textit{b} ($ \sigma_{b} $)como:
+\begin{equation}
+\sigma_{b} = \sigma_{Y} \sqrt{\dfrac{\displaystyle\sum_{i=1}^{n} X_{i}^{2}}{n \displaystyle\sum_{i=1}^{n} X_{i}^{2}- \left( \displaystyle\sum_{i=1}^{n} X_{i} \right) ^{2}}}
+\end{equation}
+\begin{equation}\label{sigmab}
+\sigma_{b} =\sqrt{\dfrac{1}{n-2}\sum_{i=1}^{n}\left( Y_{i}-mX_{i}-b \right) ^{2}} 
+\sqrt{\dfrac{\displaystyle\sum_{i=1}^{n} X_{i}^{2}}{n \displaystyle\sum_{i=1}^{n} X_{i}^{2}- \left( \displaystyle\sum_{i=1}^{n} X_{i} \right) ^{2}}}
+\end{equation}
+finalmente si se utilizan las ecuaciones \ref{sigmam} y \ref{sigmab} para nuestro conjunto de datos se tiene que $ \sigma_{m}=0.004 $ y $ \sigma_{b} = 0.346 $. Con esta información podemos reportar al modelo matemático para nuestros datos como:
+\begin{equation}
+Y=(0.273 \pm 0.004) X - (0.950 \pm 0.346)
+\end{equation}
+
+
+Al procedimiento utilizado se le conoce como el método de mínimos cuadrados. Aquí se utilizó para el caso de una línea recta, pero de la misma forma se puede utilizar para cualquier función \textit{f(x)}, claro que la función que se escoja dependerá de como se como se comportan los datos.\\
+
+
+\subsection{Cuando hay errores diferentes en las ordenadas}
+Todo el desarrollo anterior es útil si los errores de todas las ordenadas son iguales, pero ¿qué ocurre si las ordenadas tienen errores diferentes? En ese caso se necesita considerar  de alguna manera como influye el error de cada dato. Sería bueno que los datos con errores mas pequeños fueran mas importantes que los datos con errores mas grandes, una forma de lograr esto es usar una función  ligeramente diferente a la función \textit{dif} (ecuación \ref{eqdif}). la función que se minimizará es :
+
+\begin{equation}
+ \chi^{2}=\sum_{i=1}^{n}\dfrac{(Y_{i}-f(X_{i}))^{2}}{\sigma_{i}^{2}}
+ \end{equation} 
+Un poco mas adelante se hablara con mas detalle de esta función. A la función anterior se le aplica el mismo proceso de minimización descritos anteriormente para encontrar los parámetros \textit{m} y \textit{b} del ajuste a una linea recta, con lo cual se obtiene que:
+\begin{equation}
+b= \dfrac{\displaystyle\sum_{i=1}^{n} \frac{X_{i}^{2}}{\sigma_{i}^{2}} \displaystyle\sum_{i=1}^{n}
+ \frac{Y_{i}}{\sigma_{i}^{2}} - \displaystyle\sum_{i=1}^{n}\frac{X_{i}}{\sigma_{i}^{2}}  
+   \displaystyle\sum_{i=1}^{n}\frac{X_{i}Y_{i}}{\sigma_{i}^{2}} }{\displaystyle\sum_{i=1}^{n} \frac{1}{\sigma_{i}^{2}}  \displaystyle\sum_{i=1}^{n} \frac{X_{i}^{2}}{\sigma_{i}^{2}} - 
+   \left(  \displaystyle\sum_{i=1}^{n}  \frac{X_{i}}{\sigma_{i}^{2}} \right) ^{2} }
+\end{equation}
+
+\begin{equation}
+m= \dfrac{\displaystyle\sum_{i=1}^{n} \frac{1}{\sigma_{i}^{2}}    \displaystyle\sum_{i=1}^{n}\frac{X_{i}Y_{i}}{\sigma_{i}^{2}} -  \displaystyle\sum_{i=1}^{n}\frac{X_{i}}{\sigma_{i}^{2}}
+ \displaystyle\sum_{i=1}^{n}\frac{Y_{i}}{\sigma_{i}^{2}}          }{
+\displaystyle\sum_{i=1}^{n} \frac{1}{\sigma_{i}^{2}}  \displaystyle\sum_{i=1}^{n} \frac{X_{i}^{2}}{\sigma_{i}^{2}} - 
+   \left(  \displaystyle\sum_{i=1}^{n}  \frac{X_{i}}{\sigma_{i}^{2}} \right) ^{2} }
+\end{equation}
+y para los errores de los parámetros b y m se tiene:
+
+\begin{equation}
+ \sigma_{b}^{2} =     \dfrac{\displaystyle\sum_{i=1}^{n} \frac{X_{i}^{2}}{\sigma_{i}^{2} }}{
+ \displaystyle\sum_{i=1}^{n} \frac{1}{\sigma_{i}^{2}}  \displaystyle\sum_{i=1}^{n} \frac{X_{i}^{2}}{\sigma_{i}^{2}} - 
+   \left(  \displaystyle\sum_{i=1}^{n}  \frac{X_{i}}{\sigma_{i}^{2}} \right) ^{2} }
+ \end{equation} 
+y
+\begin{equation}
+\sigma_{m}^{2} = 
+\dfrac{\displaystyle\sum_{i=1}^{n} \frac{1}{\sigma_{i}^{2}}}{
+ \displaystyle\sum_{i=1}^{n} \frac{1}{\sigma_{i}^{2}}  \displaystyle\sum_{i=1}^{n} \frac{X_{i}^{2}}{\sigma_{i}^{2}} - 
+   \left(  \displaystyle\sum_{i=1}^{n}  \frac{X_{i}}{\sigma_{i}^{2}} \right) ^{2} }
+\end{equation}
+\\
+
+Un caso particularmente interesante es si los datos pueden ser modelados por lo que comúnmente se llama una ley de potencias es decir 
+\begin{equation}
+Y=f(X)=CX^{\alpha}
+\end{equation}
+en este caso lo correcto sería hacer la minimización de la función \textit{dif} (ó $ \chi^{2} $ si los errores no son iguales para las ordenadas) como se hizo para el caso de una línea recta, pero para este nivel puede ser suficiente hacer un pequeño truco. Este truco consiste en  sacar logaritmos a las variables  \textit{X} y \textit{Y}, pues en ese caso lo que tenemos es que:
+\begin{equation}
+\log (Y)= \log (C) + \alpha \log (X)
+\end{equation}
+ es decir en el plano logarítmico nuestros datos tienen un comportamiento lineal y podemos utilizar  los resultados de ajustar nuestros datos a un modelo lineal. Una vez  encontrados los parámetros de la línea recta en el plano logarítmico, podemos aplicar la función inversa del logaritmo para recuperar el comportamiento de nuestros datos en el plano X Y.
+
+\section{Evaluación del modelo matemático}
+  
+Una vez que determinamos el valor der los parámetros del modelo matemático, que describe el comportamiento del fenómeno que estudiamos en nuestro experimento, sería bueno saber que tan bien nuestro modelo describe el comportamiento de nuestros datos. Para eso lo primero que podemos hacer, es una gráfica de nuestros datos y el modelo, como se puede ver en la figura \ref{gaj}. En dicha figura se puede observar que el modelo lineal \textit{f(X)} describe bastante bien el comportamiento de nuestros datos, pero esto no es un criterio suficiente ni objetivo para decir que nuestro modelo es bueno o malo. Una buena costumbre es hacer una gráfica de nuestra variable dependiente Y menos nuestro modelo f(X) como las ordenadas y nuestra variable independiente  (X) como las abscisas, tal como se muestra en la figura \ref{res}. \\
+
+Si nuestro modelo describe bien el comportamiento de nuestro experimento, se esperaría que en este tipo de gráfica de diferencias, los datos estén distribuidos aleatoriamente arriba y abajo del valor 0. Si los datos presentan un comportamiento sistemático, por  ejemplo que en la gráfica a la izquierda los datos estén por debajo de cero, al centro estén arriba de cero y a la derecha estén otra vez por debajo de cero, esto podría indicar que nuestro modelo no es del todo correcto. Pero de todas maneras este  tampoco es un  criterio para evaluar a nuestro modelo.  \\
+\begin{figure}
+\begin{center}
+\includegraphics[scale=1]{g3aj_out.eps}
+\caption{Gráfica de los datos y el modelo lineal encontrado}\label{gaj}
+\end{center}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=1]{gdif_out.eps} 
+\caption{Gráfica de la diferencia entre la variable dependiente y el modelo (Y-f(X))}\label{res}
+\end{center}
+\end{figure}
+
+Podemos construir un criterio para evaluar la calidad de nuestro modelo utilizando la ecuación  \ref{eqdif} y la dispersión o la incertidumbre de nuestra variable dependiente, esto se conoce como el criterio de  $ \chi^{2}$, definiremos a $ \chi^{2}$ como:
+
+\begin{equation}
+\chi^{2}=\sum_{i=1}^{n}\dfrac{(Y_{i}-f(X_{i}))^2}{\sigma_{i}^{2}}
+\end{equation}
+donde \textit{f(X)} es el modelo matemático o hipótesis, $\sigma_{i}$ es la desviación estándar de nuestra variable Y si esta la determinamos de manera estadística ( si no es el caso podemos usar el incertidumbre de Y). En el caso de que el modelo fuera perfecto $\chi^{2} = 0 $, pero este caso no ocurre, en general el modelo es bueno cuando $\chi^{2}$ es pequeña, y cuando esta cantidad es grande podemos decir que el modelo es malo. Aún con esto, este criterio es muy ambiguo, ya que es muy arbitrario decir que un número es grande o pequeño si no se tiene una referencia. Para eliminar esta ambigüedad se define la cantidad  $ \chi_{red}^{2}$, que será una especie de normalización de la $\chi^{2}$. Definiremos a $ \chi_{red}^{2}$ como:
+
+\begin{equation}
+\chi_{red}^{2}=\dfrac{\chi^{2}}{NGL}
+\end{equation}
+donde \textit{NGL} es el número de grados de libertad que tenemos. El \textit{NGL} lo definiremos como el número de datos que tenemos  (n) menos el número de parámetros que tienen nuestro modelo, \textit{i. e.}:
+\begin{equation}
+ ngl= n - \text{ número de parámetros del modelo}
+ \end{equation} 
+en el caso de nuestro modelo lineal tenemos dos parámetros (\textit{m} y \textit{b}) y nuestro número de datos es 29, por lo tanto el número de grados de libertad es $NGL = 29 - 2 = 27 $, entonces para nuestro caso de modelo lineal con 29 datos tendremos que :
+\begin{equation}
+\chi_{red}^{2}=\dfrac{\displaystyle\sum_{i=1}^{n}\dfrac{(Y_{i}-mX_{i}-b)^2}{\sigma_{i}^{2}}}{27}
+\end{equation}
+
+Calculando los valores para nuestros datos se obtiene  $\chi^{2}= 31.495$ y  $\chi_{red}^{2}= 1.166$. El criterio de la $\chi_{red}^{2}$ nos dice que si esta cantidad es cercana a cero nuestro modelo sería perfecto, pero algunos criterios estadísticos nos dicen que es muy raro que esto ocurra (por no decir que se está haciendo trampa). Si $\chi_{red}^{2}$ es menor que 1 podemos asegurar que nuestro modelo es bastante bueno, si $\chi_{red}^{2}$ está entre 1 y 2 nuestro modelo es entre bueno y aceptable, y si $\chi_{red}^{2}$ es mayor que 2 podemos decir que nuestro modelo es malo. En el caso particular de nuestro conjunto de datos tenemos que $\chi_{red}^{2}= 1.166$, esto indica que nuestro modelo lineal es bastante bueno para describir el comportamiento de nuestros datos.
+\end{document}
